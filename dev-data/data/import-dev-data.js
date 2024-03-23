@@ -1,5 +1,4 @@
 const fs = require('fs');
-console.log('i aam here -------');
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -28,10 +27,6 @@ const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const reviews = JSON.parse(
   fs.readFileSync(`${__dirname}/reviews.json`, 'utf-8'),
 );
-
-console.log(fs.readFileSync(`${__dirname}/tours.json`));
-console.log(tours);
-console.log('i aam here -------passed json');
 
 //IMPORT DATA INTO DB
 const importData = async () => {
