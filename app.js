@@ -10,6 +10,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -24,6 +25,16 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // Global MiddleWare
+
+//Implement CORS
+app.use(cors()) // this set Access-Control-Allow-Origin: *, this allow everyone to access our api
+// To allow access from only a frontend app
+// app.use(cors({
+//   origin: 'https://frontend-domainName.com'
+// }))
+// This is to allow cors for more complex request like put, delete, and patch
+app.options('*', cors())
+
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
